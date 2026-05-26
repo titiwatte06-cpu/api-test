@@ -10,9 +10,22 @@ app.use(cors())
 
 app.use(express.json())
 
+
+app.use((req, res, next) => {
+  console.log(`show ${req.method} and ${req.path}}`)
+  next()
+})
+
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
+
 app.use('/products',routes)
 
 
+app.use((err, req, res, next) => {
+  res.status(500).json({ message: err.message })
+})
 
 async function connectDB() {
     try {

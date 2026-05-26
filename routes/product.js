@@ -9,7 +9,11 @@ router.get('/', async (req, res) => {
 
     try {
 
-    const products = await Product.find()
+    const { name } = req.query  
+    const filter = name ? { name: new RegExp(name, 'i') } : {}
+
+
+    const products = await Product.find(filter)
 
     res.status(200).json(products)
   } catch (error) {
@@ -18,6 +22,7 @@ router.get('/', async (req, res) => {
     })
   }
 })
+
 
 router.get('/:id', async (req, res) => {
   try {
@@ -35,7 +40,7 @@ router.post('/' , async (req,res) => {
     if(!name || !price ||!quantity) return res.status(400).json({ message: "กรุณากรอกข้อมูลให้ครบ" })
     try {
         const newProduct = await Product.create({name,price,quantity})
-        res.status(200).json({message:"Succesfully"})
+        res.status(201).json({message:"Succesfully"})
     } catch (error) {
         console.log(error)
         res.status(500).json({message:"Not found"})

@@ -4,6 +4,12 @@ GET http://localhost:3000/products
 ###
 GET http://localhost:3000/products/6a153ad015b903abb0afb3cf
 
+### Filter by name
+GET http://localhost:3000/products?name=Keyboard
+
+### Filter by name that doesn't exist
+GET http://localhost:3000/products?name=Table
+
 ### Add a product
 
 POST http://localhost:3000/products
@@ -11,7 +17,7 @@ Content-Type: application/json
 
 {
   "name": "Keyboard",
-  "price": 49.99,
+  "price": 49.88,
   "quantity": 1
 }
 
