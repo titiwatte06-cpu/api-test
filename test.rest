@@ -1,6 +1,8 @@
 ### Get all products
 GET http://localhost:3000/products
 
+###
+GET http://localhost:3000/products/6a153ad015b903abb0afb3cf
 
 ### Add a product
 
@@ -14,11 +16,22 @@ Content-Type: application/json
 }
 
 ### Add a product
-POST http://localhost:3000/products
+PUT http://localhost:3000/products/6a153ad015b903abb0afb3cf
 Content-Type: application/json
 
 {
-  "name": "Keyboard",
-  "price": 49.5,
+  "name": "Rubber",
+  "price": 50,
   "quantity": 1
 }
+
+###
+PATCH http://localhost:3000/products/6a153ad015b903abb0afb3cf
+Content-Type: application/json
+
+{
+  "name": "King"
+}
+
+###
+DELETE http://localhost:3000/products/6a1529ff9ba914d9ae38268a

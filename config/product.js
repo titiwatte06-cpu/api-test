@@ -1,7 +1,0 @@
-import shcema from "./shcema.js";
-
-const Product = new mongoose("Product",shcema)
-
-const MONGODB_URL = mongodb+srv://titiwatte06_db_user:025221011@api-test.juutom7.mongodb.net/?appName=API-TEST
-
-export default Product

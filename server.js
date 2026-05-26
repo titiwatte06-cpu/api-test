@@ -1,7 +1,8 @@
 import express from 'express'
 import cors from 'cors'
-// import apiRouter from './routes/routes.js'
+import routes from './routes/product.js'
 import mongoose from 'mongoose'
+import Product from './model/Product.js'
 
 const app = express()
 
@@ -9,7 +10,7 @@ app.use(cors())
 
 app.use(express.json())
 
-// app.use('/api',apiRouter)
+app.use('/products',routes)
 
 
 
@@ -25,33 +26,7 @@ async function connectDB() {
 
 connectDB()
 
-app.get('/products', async (req, res) => {
-    console.log(req.body)
-    try {
-        console.log(req.body)
-    const products = await Product.find()
 
-    res.status(200).json(products)
-  } catch (error) {
-    res.status(500).json({
-      message: error.message
-    })
-  }
-})
-
-app.post('/products' , async (req,res) => {
-    console.log(req.body)
-    const {name,price,quantity} = req.body 
-    
-    if(!name || !price ||!quantity) return 
-    try {
-        console.log(req.body)
-        const newProduct = await Product.create({name,price,quantity})
-        res.status(200).json({message:"Succesfully"})
-    } catch (error) {
-        res.status(400).json({message:"Not found"})
-    }
-})
 
 
 const PORT = 3000
